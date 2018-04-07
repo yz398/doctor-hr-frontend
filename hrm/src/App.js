@@ -28,7 +28,7 @@ class App extends React.Component {
 			</Toolbar>
 		</AppBar>
 		<Hello color="maroon"/>		
-		<FetchData />
+		<FetchData heading={["HR", "Time"]} />
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
 var styles = {
 	"dataStyle": {
@@ -36,11 +37,28 @@ class FetchData extends React.Component {
 			console.log(response);
 			console.log(response.status);
 			this.setState({"data": response.data.measurements});
-			this.setState({"times": response.data.time});
+			this.setState({"times": response.data.time});	
 		})	
+	}
+	
+	generateTableDataForLoop = () => {
+		var prettyTableData = [];
+
+		for (var i = 0; i < this.state.data.length; i++) {
+			prettyTableData.push(
+				<TableRow>
+					<TableCell> {this.state.data[i]} </TableCell>
+					<TableCell> {this.state.times[i]} </TableCell>
+				</TableRow>
+			);
+		}
+
+		return prettyTableData;
+
 	}
 
 	render() {
+		var prettyTableData = this.generateTableDataForLoop();
 		return (
 			<div style={ {"marginLeft": "275px", "marginBottom": "10px"}}>
 				<TextField 
@@ -60,18 +78,16 @@ class FetchData extends React.Component {
 				</Button>
 				</div>
 
-				<div style={styles.dataStyle}>
-					{this.state.data[0]}
-					{this.state.times[0]}
-				</div>
-				<div style={styles.dataStyle}>
-					{this.state.data[1]}
-					{this.state.times[1]}
-				</div>
-				<div style={styles.dataStyle}>
-					{this.state.data[2]}
-					{this.state.times[2]}
-				</div>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell> {this.props.heading[0]} </TableCell>
+							<TableCell> {this.props.heading[1]} </TableCell>
+						</TableRow>
+					</TableHead>
+					{/* time for some data */}
+					{prettyTableData}	
+				</Table>
 			</div>		
 		)
 	}
