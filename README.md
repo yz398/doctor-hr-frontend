@@ -7,3 +7,4 @@ The initial state of the browser:
 ![404 Not Found](https://github.com/yz398/doctor-hr-frontend/blob/master/initial.png)
 When users get data:  
 ![404 Not Found](https://github.com/yz398/doctor-hr-frontend/blob/master/test.png)
+http://localhost:3000/
