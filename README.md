@@ -8,3 +8,6 @@ The initial state of the browser:
 When users get data:  
 ![404 Not Found](https://github.com/yz398/doctor-hr-frontend/blob/master/test.png)
 http://localhost:3000/
+
+__running the project__  
+first """ npm install """
